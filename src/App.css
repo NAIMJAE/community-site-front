@@ -1,0 +1,2992 @@
+/*공통*/
+* {
+    margin: 0;
+    padding: 0;
+    font: normal 12px 'Noto Sans KR', sans-serif;
+}
+ul,
+ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #111;
+}
+input,
+textarea {
+    outline: none;
+}
+.searchIcon {
+    display: flex;
+    background-image: url(../public/images/searchIcon.png);
+    background-size: contain;
+    width: 22px;
+    height: 22px;
+}
+div {
+    box-sizing: border-box;
+}
+body {
+    background-color: #f0f1f4;
+    height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.font14 {
+    font-size: 14px !important;
+}
+.font16 {
+    font-size: 16px !important;
+}
+.font20 {
+    font-size: 20px !important;
+}
+.font30 {
+    font-size: 30px !important;
+}
+.alignL {
+    justify-content: left !important;
+}
+.alignR {
+    justify-content: right !important;
+}
+.maR30 {
+    margin-right: 30px;
+}
+/* 페이징 */
+.paging {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.paging > button {
+    font-size: 16px;
+    min-width: 20px;
+    text-align: center;
+    background-color: transparent;
+    padding: 4px;
+    margin: 0 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #808080;
+}
+.paging > button:hover {
+    background-color: #eeeeee;
+    border-radius: 4px;
+}
+.paging > .pageOn {
+    background-color: #eeeeee;
+    border-radius: 4px;
+}
+.btn {
+    font-size: 16px;
+    min-width: 20px;
+    text-align: center;
+    background-color: transparent;
+    padding: 4px;
+    margin: 0 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #808080;
+}
+
+/* 모달창 */
+.modlaBack {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.3);
+    z-index: 10;
+}
+.modalBox {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: white;
+}
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 20px 10px;
+}
+.modalHeader > p {
+    font-size: 18px;
+    font-weight: bolder;
+}
+.modalColumn {
+    display: flex;
+    flex-direction: column;
+}
+.modalRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.modalBox > .modalColumn:nth-last-child(1) {
+    border: 0;
+}
+.modalRow > div {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    padding: 4px 10px;
+}
+.modalRow > div:nth-child(1) {
+    width: 150px;
+}
+.modalRow > div:nth-child(2) {
+    width: 300px;
+}
+.modalRow > div > select {
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    border: 1px solid #a9a9a9;
+    border-radius: 4px;
+}
+.modalRow > div option {
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+}
+.modalRow > input[type='submit'] {
+    width: 100px;
+    height: 36px;
+    font-size: 16px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 0 10px;
+    background-color: #649fff;
+    border: 1px solid #5086dd;
+    font-weight: bolder;
+    color: white;
+}
+.modalRow > button {
+    width: 100px;
+    height: 36px;
+    font-size: 16px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 0 10px;
+    border: 1px solid #a9a9a9;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+.modalRow input {
+    width: 250px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 0 10px;
+    border: 1px solid #a9a9a9;
+    border-radius: 4px;
+}
+.modalRow img {
+    display: flex;
+    width: 120px;
+}
+.modalDouble {
+    display: flex;
+    font-size: 18px;
+    padding: 4px 10px;
+}
+/*        모달 어드민 게시물 숨김 시작         */
+.modalColumnRow {
+    display: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.modalText {
+    border: 1px solid #c4c4c4;
+}
+
+.modalColumnRow > div {
+    display: flex;
+    justify-content: left;
+    font-size: 18px;
+    padding: 4px 10px;
+}
+
+.modalColumnRow > div > select {
+    width: 170px;
+    height: 40px;
+    font-size: 18px;
+}
+.modalColumnRow > div option {
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+}
+
+.modalColumnRow > div > input[type='textbox'] {
+    width: 500px;
+    height: 301px;
+    font-size: 18px;
+}
+.modalGroup {
+    display: flex;
+    width: 100%;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+}
+.modalGroup * {
+    font-size: 12px !important;
+}
+
+.delBtn {
+    display: block;
+    width: 100px;
+    font-size: 15px;
+    padding: 4px 6px;
+    margin: 10px 5px;
+    line-height: 24px;
+    border: 1px solid #111;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #f4f4f4;
+}
+.outputCheck > label {
+    display: flex;
+    width: 90px;
+    height: 30px;
+    padding: 4px 2px;
+    margin: 0 4px;
+    border: 1px solid #a9a9a9;
+    border-radius: 4px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+.outputCheck > label > span {
+    font-size: 14px;
+    margin-left: 5px;
+}
+.outputCheck > input[type='radio'] {
+    display: none;
+}
+.outputCheck > input[type='radio']:checked + label {
+    color: #649fff;
+    border: 1px solid #649fff;
+}
+
+/*        모달 어드민 게시물 숨김 끝        */
+/* 버튼 */
+.nomalBtn {
+    display: inline-block;
+    width: auto;
+    font-size: 15px;
+    padding: 4px 6px;
+    margin: 0 5px;
+    line-height: 24px;
+    border: 1px solid #111;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #f4f4f4;
+}
+/* toast-ui */
+.toastui-editor-contents p {
+    font-size: 16px;
+}
+/* 랜딩페이지 */
+#landingPage {
+    display: flex;
+    width: 100%;
+    height: 1200px;
+    text-align: center;
+    font-size: 40px;
+    background-image: url(../public/images/landingPageBackgroundImage.jpg);
+    background-size: cover;
+    justify-content: center;
+}
+#landingBox {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    padding: 50px;
+    margin-top: 200px;
+    background-color: rgba(125, 125, 125, 0.5);
+    border-radius: 20px;
+    justify-content: center;
+}
+#landingBox > a,
+#landingBox > p {
+    font-size: 40px;
+    color: white;
+}
+/* 기본 레이아웃 구분 */
+#container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: #eeeeee;
+    margin: 0 auto;
+}
+section {
+    display: flex;
+    height: 1000px;
+    box-sizing: border-box;
+}
+#sideBar {
+    flex-direction: column;
+    width: 297px;
+    height: 100%;
+    padding: 10px;
+    background: #6e9bf0; /* 다크 블랙-그레이 그라데이션 */
+    border-right: 2px solid rgb(80, 102, 144); /* 그레이 테두리 */
+    box-shadow: 10px 0px 20px #c8c8c8;
+    z-index: 10;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+#contentArea {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #eeeeee;
+    overflow: scroll;
+}
+#contentArea::-webkit-scrollbar {
+    display: none;
+}
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: white;
+    border-top: 1px solid #c7c8cc;
+}
+.footerContent {
+    margin: 10px 40px;
+}
+.footerContent > a {
+    font-size: 14px;
+    margin: 0 5px;
+}
+.footerContent > p {
+    font-size: 14px;
+}
+
+/* 사이드 바 */
+.boxTitle {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-bottom: 1px solid #c7c8cc;
+}
+.boxTitle > img {
+    width: 80px;
+    height: 50px;
+}
+.boxTitle p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #111;
+    padding-left: 10px;
+}
+
+.sideBox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.sideTitle {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    margin: 4px 0;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-bottom: 1px solid #111;
+}
+.sideTitle > span {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #111;
+}
+.sideTitle > div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.sideTitle p {
+    font-size: 16px;
+    color: #111;
+}
+.sideTitle span {
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 10px;
+    color: #111;
+}
+.sideTab {
+    display: flex;
+    width: 100%;
+    height: 36px;
+    padding: 0px 0 0px 20px;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.sideTab > img {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+.sideTab * {
+    display: inline-block;
+    color: #111;
+}
+.svg-inline--fa {
+    width: 20px;
+    height: 20px;
+}
+.sideTab p {
+    font-size: 16px;
+    padding-left: 6px;
+}
+.sideTab:hover {
+    background-color: #4678d7;
+}
+.sideTabOn {
+    background-color: #4678d7;
+}
+
+/* 상단바 */
+#navbar {
+    width: 100hv;
+    display: flex;
+    height: 50px;
+    padding: 10px 0;
+    justify-content: end;
+    align-content: center;
+    background-color: white;
+    border-bottom: 1px solid #535c91;
+    box-shadow: 10px 0px 20px #c8c8c8;
+    z-index: 10;
+}
+.searchBar {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    width: 500px;
+    height: 30px;
+    border: 1px solid #111;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+.searchBar > input {
+    font-size: 14px;
+    border: 0;
+    width: 450px;
+    margin-left: 10px;
+}
+.searchBar > span {
+    padding: 4px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+}
+#userBox {
+    display: flex;
+    margin: 0 10px;
+    align-items: center;
+}
+#userBox > a {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    margin-right: 20px;
+}
+#userBox > img {
+    width: 30px;
+    height: 30px;
+}
+
+/* 메인영역 */
+#mainBox {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1600px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.contentBox {
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(163, 163, 163, 0.5);
+}
+.contentBox > p {
+    font-size: 18px;
+    padding: 5px 0;
+}
+
+.boxStyle1 {
+    width: 380px;
+    height: 300px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.boxStyle2 {
+    width: 780px;
+    height: 380px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.boxStyle3 {
+    width: 380px;
+    height: 780px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.boxStyle4 {
+    width: 780px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.boxStyle5 {
+    width: 1180px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.boxStyle6 {
+    width: 380px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+/*가로:무한 세로:무한 스크롤*/
+.boxStyle7 {
+    width: 1600px;
+    min-height: 840px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+/*가로:무한 세로:900px - 스크롤 넣어야함*/
+.boxStyle8 {
+    width: 1580px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+/*가로:25% 세로 자동*/
+.boxStyle9 {
+    width: 380px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+/*가로:50% 세로 자동*/
+.boxStyle10 {
+    width: 780px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+/*가로:50% 세로 20%*/
+.boxStyle11 {
+    width: 780px;
+    height: 300px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+/*가로:33% 세로 25%*/
+.boxStyle12 {
+    width: 513px;
+    height: 380px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.mainSEtting {
+    display: flex;
+    width: 1160px;
+    height: 780px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.contentTitle {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.contentInfo {
+    display: flex;
+    font-size: 14px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #808080;
+}
+.contentColumn {
+    display: flex;
+    flex-direction: column;
+}
+.contentColumn > div:nth-child(1) > div {
+    font-weight: bold;
+}
+.contentColumn > div > div > a {
+    font-size: 16px;
+}
+.createRow {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
+.createRow > a {
+    display: inline-block;
+    width: auto;
+    font-size: 16px;
+    padding: 4px 6px;
+    margin: 0 5px;
+    line-height: 24px;
+    border: 1px solid #111;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #f4f4f4;
+}
+.contentRow {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f1f1;
+}
+.searchColumn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 0;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.contentRow > p {
+    display: flex;
+    font-size: 14px;
+}
+.contentWithCheck {
+    display: flex;
+}
+.contentWithCheck > input {
+    margin-right: 10px;
+}
+.contentWithCheck > p {
+    display: flex;
+    font-size: 14px;
+}
+
+.profileRow {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    justify-content: center;
+    flex-direction: column;
+}
+.profileRow > p {
+    font-size: 18px;
+    padding: 0 0 20px 20px;
+}
+
+.contentImg {
+    display: flex;
+    width: 100px;
+    height: 100px;
+}
+.profileContent {
+    padding: 10px 0 10px 30px;
+}
+.profileContent > p {
+    font-size: 18px;
+    padding: 10px 0;
+}
+.profileContent > p:nth-child(1) {
+    font-size: 20px;
+    font-weight: bolder;
+}
+.hidden {
+    display: block !important;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* member */
+.memberBack {
+    display: flex;
+    width: 100%;
+    height: 1000px;
+}
+.termsBack {
+    background-image: url(../public/images/termsBack.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.memberBox {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    width: 1000px;
+    height: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.memberColumn {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+.memberRow {
+    display: flex;
+}
+.memberTitle {
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.memberColumn > div {
+    margin: 5px 0;
+}
+.termsColumn > div {
+    width: 800px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.termsColumn > div > textarea {
+    width: 100%;
+    height: 150px;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.termsColumn > label {
+    display: flex;
+    font-size: 16px;
+    align-self: end;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.termsColumn > label > input {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+.termsBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    margin: 0 10px;
+
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+
+    background-color: white;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* 로그인 */
+.loginBox {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.loginBack {
+    background-image: url(../public/images/loginBack.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.loginImg {
+    display: flex;
+    width: 400px;
+}
+.socialLogin {
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+.socialLogin > img {
+    width: 30px;
+}
+.socialLogin > span {
+    font-size: 18px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.loginBox > div {
+    display: flex;
+}
+.loginBox > form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    margin: 20px 0;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+.loginBox > form input {
+    margin: 5px 0;
+    width: 400px;
+    height: 50px;
+    box-sizing: border-box;
+
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.loginBox > form input::placeholder {
+    font-size: 16px;
+    color: white;
+}
+.loginBox > form > input[type='submit'] {
+    background-color: #ffde1d;
+    font-weight: bold;
+    font-size: 18px;
+    border: 0;
+    cursor: pointer;
+}
+.loginBox > form > label {
+    position: relative;
+    display: flex;
+    height: auto;
+}
+.loginBox > form > label > button {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    top: 15px;
+    right: 40px;
+    background-color: transparent;
+    border: 0;
+    color: white;
+    cursor: pointer;
+}
+.loginBox > form > label > button:hover {
+    color: #ffde1d;
+}
+.loginBox > form > .labelSvae {
+    display: flex;
+    height: 30px;
+    font-size: 14px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    align-items: center;
+}
+.loginBox > form > .labelSvae > input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.loginBox > p {
+    display: flex;
+    font-size: 40px;
+    margin: 20px 0;
+}
+.loginEtc > a {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 20px 20px 0;
+}
+.loginEtc > p {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    margin: 0 20px 10px 0;
+}
+
+/* signup */
+
+.signupBack {
+    background-image: url(../public/images/signupBack.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.singupText {
+    width: 200px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+.singupText:hover {
+    background-color: #a4a4a4;
+    border: 1px solid #a4a4a4;
+}
+
+/* register */
+.registerBox {
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    width: 1000px;
+    height: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.registerBack {
+    background-image: url(../public/images/registerBack.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.registerTitle {
+    font-size: 30px;
+    text-align: center;
+}
+.registerPack {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0 0 40px;
+}
+.registerPack > div {
+    width: 400px;
+}
+.registerRow > div:nth-child(1) {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+.registerRow > .imageBox {
+    display: flex;
+    align-items: center;
+}
+.registerRow > .imageBox > img {
+    width: 66px;
+    height: 100px;
+}
+.registerRow > .imageBox input[type='file'] {
+    width: 400px;
+}
+.registerRow > .imageBox > div {
+    font-size: 18px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+.registerRow > div input {
+    width: 300px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 4px 10px;
+    font-size: 18px;
+    margin-bottom: 4px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+}
+.registerRow > span {
+    font-size: 14px;
+    color: rgb(255, 181, 181);
+}
+.registerRow select {
+    width: 300px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 4px 10px;
+    font-size: 18px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+}
+.registerRow option {
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+}
+.registerRow button {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 4px 0;
+    line-height: 31px;
+    margin-left: 4px;
+    font-size: 16px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+}
+.registerRow > div > input[name='addr1'] {
+    width: 650px;
+}
+.registerRow > div > input[name='addr2'] {
+    width: 650px;
+}
+.registerBtn {
+    display: flex;
+
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #111;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    margin: 10px 5px;
+
+    background-color: white;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* complete */
+#completeBox {
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    width: 600px;
+    height: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.completeBack {
+    background-image: url(../public/images/completeBack.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+#completeBox > p {
+    font-size: 26px;
+    margin-bottom: 40px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+#completeBox span {
+    font-size: 26px;
+    color: rgb(114, 255, 142);
+}
+
+/* 아이디 비밀번호 찾기 */
+.findIdBack {
+    background-image: url(../public/images/findIdBack.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.findPwBack {
+    background-image: url(../public/images/findPwBack.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.findPack {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+}
+.findPack > div {
+    min-width: 100px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 10px;
+    align-content: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.findPack > div > input {
+    width: 400px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 4px 10px;
+    font-size: 18px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.findPack > div > input[type='email'] {
+    width: 310px;
+}
+.findPack > div > button {
+    width: 80px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 4px 10px;
+    font-size: 18px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.findPack > div > p {
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: transparent;
+    color: rgb(255, 201, 201);
+}
+.findPack > div > span {
+    box-sizing: border-box;
+    font-size: 26px;
+    background-color: transparent;
+    color: rgb(161, 255, 178);
+}
+.findPack > div > h2 {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.bigBtn {
+    width: 170px !important;
+}
+.btnColorW {
+    background-color: white !important;
+    color: #111 !important;
+    font-weight: bold;
+}
+.btnColorR {
+    background-color: rgb(70, 131, 255) !important;
+    border: 2px solid rgb(70, 131, 255) !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+/* 게시판 */
+.listType {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 20px;
+}
+.listType > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+}
+.listOn {
+    background-color: #eeeeee;
+    border-radius: 4px;
+}
+
+.searchRow {
+    display: flex;
+    padding: 20px 0;
+    font-size: 18px;
+}
+.userSearchRow {
+    display: flex;
+    padding: 37px 0;
+    font-size: 18px;
+}
+.userSearchRow > input[type='submit'] {
+    width: 100px;
+    height: 100px;
+    font-size: 18px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.searchBox {
+    border: 0;
+    margin-top: 20px;
+}
+.searchRow > input {
+    border: 1px solid #c9c9c9;
+}
+.searchRow > input[type='date'] {
+    width: 200px;
+    height: 36px;
+    font-size: 16px;
+    padding: 0 10px;
+    margin: 0 10px;
+    box-sizing: border-box;
+}
+.searchRow > select {
+    width: 150px;
+    height: 36px;
+    font-size: 16px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #c9c9c9;
+}
+.searchRow > select > option {
+    font-size: 16px;
+    padding: 0 10px;
+    border: 1px solid #c9c9c9;
+}
+.searchRow > input[type='text'] {
+    width: 300px;
+    height: 36px;
+    font-size: 16px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 0 -1px;
+}
+.searchRow > input[type='submit'] {
+    width: 100px;
+    height: 36px;
+    font-size: 16px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.searchRow > label {
+    display: flex;
+    font-size: 16px;
+    margin: 0 10px;
+    align-items: center;
+    justify-content: center;
+}
+.searchRow input[type='checkbox'] {
+    width: 26px;
+    height: 26px;
+    margin: 0 10px 0 20px;
+    border: 1px solid #c9c9c9;
+}
+.searchTitle {
+    height: 36px;
+    font-size: 18px;
+    margin: 0 20px 0 10px;
+    line-height: 36px;
+}
+.searchRow > .space150 {
+    width: 150px;
+}
+.searchRow > .space330 {
+    width: 330px;
+}
+
+.articleRow {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #808080;
+    align-items: center;
+    font-size: 20px;
+    justify-content: center;
+}
+.articleRow > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.articleRow > div > img {
+    width: 100px;
+    height: 100px;
+}
+.articleRow > div:nth-child(1) {
+    width: 5%;
+    justify-content: center;
+}
+.articleRow > div:nth-child(2) {
+    width: 10%;
+    justify-content: center;
+}
+.articleRow > div:nth-child(3) {
+    width: 55%;
+}
+.articleRow > div:nth-child(4) {
+    width: 10%;
+    justify-content: center;
+}
+.articleRow > div:nth-child(5) {
+    width: 10%;
+    justify-content: center;
+}
+.articleRow > div:nth-child(6) {
+    width: 10%;
+    justify-content: center;
+}
+
+.contentCard {
+    display: flex;
+    flex-wrap: wrap;
+}
+.articleCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 370px;
+    padding: 10px 20px;
+    margin: 10px 6px;
+    box-sizing: border-box;
+    border: 1px solid #808080;
+    cursor: pointer;
+}
+.articleCard > div {
+    padding: 4px 10px;
+    font-size: 16px;
+    overflow: hidden;
+}
+.articleCard > div > img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+.articleCard > div > img {
+    width: 300px;
+}
+.articleCard > div:nth-child(1) {
+    display: none;
+}
+.articleCard > div:nth-child(2) {
+}
+.articleCard > div:nth-child(3) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.articleCard > div:nth-child(4) {
+    font-size: 14px;
+}
+.articleCard > div:nth-child(5) {
+    font-size: 14px;
+}
+.articleCard > div:nth-child(6) {
+    font-size: 14px;
+}
+.articleCard > div:nth-child(4)::before {
+    content: '조회수 : ';
+}
+.articleCard > div:nth-child(5)::before {
+    content: '작성자 : ';
+}
+.articleCard > div:nth-child(6)::before {
+    content: '작성일 : ';
+}
+
+/* 게시판 write */
+.writeRow {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    justify-content: space-between;
+}
+.writeRow > .wrtieBtnBox {
+    display: flex;
+    justify-content: end;
+    padding: 20px 0;
+}
+.writeRow > .wrtieBtnBox > input {
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    font-size: 16px;
+    border: 1px solid #dadde6;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f7f9fc;
+}
+.writeRow > p {
+    font-size: 30px;
+    padding: 10px 0;
+    border-bottom: 1px solid #dadde6;
+}
+.writeRow > p > span {
+    font-size: 30px;
+}
+.writeTitle {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #dadde6;
+    border-radius: 4px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+.writeFile {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #dadde6;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    box-sizing: border-box;
+    align-items: center;
+}
+.writeFile > input {
+    cursor: pointer;
+}
+.fileList {
+    display: flex;
+}
+.fileList > span {
+    display: inline-block;
+    width: auto;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin: 0 4px;
+    text-align: center;
+}
+.fileList > span > span {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+    padding: 0 4px 2px 4px;
+}
+
+.fileList > span > span:hover {
+    background-color: darkred;
+}
+.fileList > div > a {
+    width: 200px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin: 0 4px;
+}
+.viewRow {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    justify-content: space-between;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.viewRow > p {
+    font-size: 30px;
+    padding: 10px 0;
+    border-bottom: 1px solid #dddddd;
+}
+.viewRow > p > span {
+    font-size: 30px;
+}
+
+/* admin */
+.adminUserRow {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #808080;
+    align-items: center;
+    justify-content: center;
+}
+
+.adminUserRow:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.adminUserRow > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.adminUserRow > div > img {
+    width: 100px;
+    height: 100px;
+}
+.adminUserRow > div:nth-child(1) {
+    width: 5%;
+    justify-content: center;
+}
+.adminUserRow > div:nth-child(2) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRow > div:nth-child(3) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRow > div:nth-child(4) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRow > div:nth-child(5) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRow > div:nth-child(6) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRow > div:nth-child(7) {
+    width: 15%;
+    justify-content: center;
+}
+.adminUserRow > div:nth-child(8) {
+    width: 20%;
+    justify-content: center;
+}
+.adminUserRow > div:nth-child(9) {
+    width: 10%;
+    justify-content: center;
+}
+
+/*호버 위해 추가*/
+.adminUserRowTitle {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #808080;
+    align-items: center;
+    justify-content: center;
+}
+
+.adminUserRowTitle > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.adminUserRowTitle > div > img {
+    width: 100px;
+    height: 100px;
+}
+.adminUserRowTitle > div:nth-child(1) {
+    width: 5%;
+    justify-content: center;
+}
+.adminUserRowTitle > div:nth-child(2) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRowTitle > div:nth-child(3) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRowTitle > div:nth-child(4) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRowTitle > div:nth-child(5) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRowTitle > div:nth-child(6) {
+    width: 10%;
+    justify-content: center;
+}
+.adminUserRowTitle > div:nth-child(7) {
+    width: 15%;
+    justify-content: center;
+}
+.adminUserRowTitle > div:nth-child(8) {
+    width: 20%;
+    justify-content: center;
+}
+.adminUserRowTitle > div:nth-child(9) {
+    width: 10%;
+    justify-content: center;
+}
+
+.adminArticleRow {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #808080;
+    align-items: center;
+}
+.adminArticleRow > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 0px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.adminArticleRow > div > img {
+    width: 100px;
+    height: 100px;
+}
+/*1540*/
+.adminArticleRow > div:nth-child(1) {
+    width: 10%;
+    justify-content: center;
+}
+.adminArticleRow > div:nth-child(2) {
+    width: 30%;
+}
+.adminArticleRow > div:nth-child(3) {
+    width: 10%;
+    justify-content: center;
+}
+.adminArticleRow > div:nth-child(4) {
+    width: 10%;
+    justify-content: center;
+}
+.adminArticleRow > div:nth-child(5) {
+    width: 10%;
+    justify-content: center;
+}
+.adminArticleRow > div:nth-child(6) {
+    width: 10%;
+    justify-content: center;
+}
+.adminArticleRow > div:nth-child(7) {
+    width: 20%;
+    justify-content: center;
+}
+/*            어드민 게시글 관리 시작               */
+
+.ModArticleRow {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #808080;
+    align-items: center;
+}
+
+.ModArticleRow:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.ModArticleRow > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.ModArticleRow > div:nth-child(1) {
+    width: 5%;
+    justify-content: center;
+}
+.ModArticleRow > div:nth-child(2) {
+    width: 5%;
+    justify-content: center;
+}
+.ModArticleRow > div:nth-child(3) {
+    width: 15%;
+    justify-content: center;
+}
+.ModArticleRow > div:nth-child(4) {
+    width: 40%;
+}
+.ModArticleRow > div:nth-child(5) {
+    width: 10%;
+    justify-content: center;
+}
+.ModArticleRow > div:nth-child(6) {
+    width: 20%;
+    justify-content: center;
+}
+.ModArticleRow > div:nth-child(7) {
+    width: 15%;
+    justify-content: center;
+}
+
+.ModArticleRowTitle {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #808080;
+    align-items: center;
+}
+
+.ModArticleRowTitle > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.ModArticleRowTitle > div:nth-child(1) {
+    width: 5%;
+    justify-content: center;
+}
+.ModArticleRowTitle > div:nth-child(2) {
+    width: 5%;
+    justify-content: center;
+}
+.ModArticleRowTitle > div:nth-child(3) {
+    width: 15%;
+    justify-content: center;
+}
+.ModArticleRowTitle > div:nth-child(4) {
+    width: 40%;
+}
+.ModArticleRowTitle > div:nth-child(5) {
+    width: 10%;
+    justify-content: center;
+}
+.ModArticleRowTitle > div:nth-child(6) {
+    width: 20%;
+    justify-content: center;
+}
+.ModArticleRowTitle > div:nth-child(7) {
+    width: 15%;
+    justify-content: center;
+}
+
+/*            어드민 게시글 관리 끝               */
+
+.scrollBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.scrollRow {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+.configRow {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dptCode {
+    font-size: 16px;
+    text-align: center;
+    width: 100px;
+}
+.configRow > div > input {
+    width: 230px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.configRow > div > span {
+    font-size: 16px;
+}
+
+.configRow > div {
+    font-size: 16px;
+    text-align: center;
+}
+.configRow > div:nth-child(1) {
+    width: 100px;
+}
+.configRow > div:nth-child(2) {
+}
+.custSelect {
+    position: relative;
+    display: flex;
+    width: 150px;
+    height: 44px;
+    border: 1px solid #848484;
+    margin: 0 10px;
+    padding: 10px !important;
+    align-content: center !important;
+    justify-content: space-between !important;
+    cursor: pointer;
+}
+.custSelect > span {
+    display: flex;
+    font-size: 16px;
+}
+.custOption {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 201px;
+    top: 42px;
+    left: -1px;
+    border: 1px solid #848484;
+    background-color: white;
+    box-sizing: border-box;
+    z-index: 10;
+}
+.custOption > p {
+    display: flex;
+    width: 200px;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #848484;
+    cursor: pointer;
+    align-items: center;
+    box-sizing: border-box;
+}
+.custOption > p:hover {
+    background-color: #dddddd;
+}
+.configBtn > button {
+    width: 70px;
+    height: 42px;
+    border: 1px solid #848484;
+    margin: 0 4px;
+    background-color: white;
+    cursor: pointer;
+}
+.configBtn > button:hover {
+    background-color: #dddddd;
+}
+
+/* CS */
+.CsSelect {
+    justify-content: end;
+}
+.CsSelect > label {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+    align-content: center;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.CsSelect > input[type='radio'] {
+    display: none;
+}
+.CsSelect > input[type='radio']:checked + label {
+    background-color: #cce5ff;
+    border-color: #007bff;
+}
+.CsSelect > select {
+    padding-left: 10px;
+    width: 130px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.CsSelect > select > option {
+    padding-left: 10px;
+    width: 130px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* 조직도 */
+.groupBox {
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+}
+.groupHead {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.groupHead > div > p {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #dddddd;
+    border-top: 1px solid #cacaca;
+    border-bottom: 1px solid #cacaca;
+}
+.groupBody {
+    display: flex;
+    padding: 0 10px 10px 40px;
+}
+.groupBody > p {
+    font-size: 16px;
+    padding: 4px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.groupBody > p > img {
+    margin-right: 7px;
+    width: 30px;
+}
+
+.groupRow {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+.groupRow > img {
+    width: 200px;
+    height: 200px;
+}
+.groupRow > div {
+    padding: 10px;
+}
+.groupRow p {
+    font-size: 18px;
+    padding: 4px 0;
+}
+.groupRow p:nth-child(1) {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 4px 0;
+}
+
+/* 댓글 */
+.commentColumn {
+    display: flex;
+    flex-direction: column;
+}
+.commentRow {
+    display: flex;
+}
+.commentRow > div {
+    display: flex;
+    justify-content: space-between;
+}
+.commentRow > div > div > img {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+}
+.commentRow > div > img {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+}
+.commentRow > div > button {
+    display: flex;
+    width: 100px;
+    height: 40px;
+    margin: 0 20px;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dadde6;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f7f9fc;
+}
+.commentRow textarea {
+    width: 100%;
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #f1f1f1;
+    resize: none;
+}
+.commentTitle {
+    display: flex;
+    justify-content: start;
+    margin-left: 20px;
+}
+.commentTitle > p {
+    font-size: 18px;
+    margin-right: 20px;
+}
+.commentContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.commentContent > textarea {
+    width: auto;
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #f1f1f1;
+    resize: none;
+}
+
+/*회원가입 스피너*/
+.spinner {
+    position: relative;
+    top: 0px;
+    left: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 채팅 */
+.chatBox {
+    display: flex;
+    width: 100%;
+    height: 840px;
+    margin-bottom: 30px;
+}
+.chatInfo {
+    width: 100%;
+    display: flex;
+    font-weight: bolder;
+    padding: 8px 10px;
+    margin: 10px 0;
+    border-bottom: 2px solid #dddddd;
+}
+.chatInfo > img {
+    width: 50px;
+    height: 50px;
+}
+.chatInfo > div {
+    width: 80%;
+    padding: 0 10px;
+    align-content: center;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.chatInfo > div > input {
+    width: 100%;
+    align-content: center;
+    font-size: 30px;
+    font-weight: bolder;
+    border: 0;
+}
+.chatInfo p:nth-child(1) {
+    font-weight: bolder;
+    font-size: 16px;
+}
+.chatInfo p {
+    width: 100%;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.chatInfo span {
+    position: relative;
+    display: flex;
+    font-size: 16px;
+    margin: 0 10px;
+    align-self: center;
+    cursor: pointer;
+}
+.settingBox {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #111;
+    padding: 5px 0;
+    width: 100px;
+    top: 30px;
+    right: -5px;
+    z-index: 30;
+}
+.settingBox > h3 {
+    font-size: 16px;
+    text-align: center;
+}
+.chatRoomList {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 8px 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.chatRoomList:hover {
+    background-color: #dddddd;
+}
+.chatRoomList > div {
+    width: 85%;
+    padding: 0 10px;
+}
+.chatRoomList p {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bolder;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.ballCount {
+    background-color: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: white;
+    font-size: 12px;
+    font-weight: bolder;
+    text-align: center;
+    align-content: center;
+}
+.chatRoom {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: end;*/
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.chat {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 2px 10px;
+}
+.chat:hover {
+    background-color: #dddddd;
+}
+.chat > img {
+    width: 50px;
+    height: 50px;
+}
+.chat > div {
+    padding: 4px 10px;
+}
+.chat > div > p {
+    font-size: 14px;
+}
+.chat > div > p:nth-child(1) {
+    font-weight: bolder;
+    padding-bottom: 4px;
+}
+.chat > div > p > span {
+    color: #727272;
+}
+.inputChatBox {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    padding: 10px;
+}
+.inputChat {
+    display: flex;
+    width: 100%;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    position: relative;
+}
+.inputChat > span {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.chatIcon {
+    margin: 10px 10px 0 10px;
+    cursor: pointer;
+}
+.inputChat > textarea {
+    border: 0;
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    font-size: 16px;
+    position: relative;
+    border-left: 1px solid #dddddd;
+}
+.inputChat > span > span {
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 40px;
+}
+.inviteList {
+    width: auto !important;
+    flex-wrap: wrap;
+}
+.inviteList > span {
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    margin: 4px;
+    padding: 15px;
+    cursor: pointer;
+    height: 15px;
+    font-size: 18px;
+    color: #111;
+}
+
+.modalRow {
+    display: flex;
+    align-items: center;
+}
+
+.maR30 {
+    margin-right: 30px;
+}
+
+.inviteList span:hover,
+.inviteList span.selected {
+    background-color: lightgrey; /* 원하는 호버 색상으로 변경 */
+    color: white;
+}
+
+.emojiBox {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    top: 2px;
+    left: 38px;
+    width: 180px;
+    height: 90px;
+    border: 1px solid #b8b8b8;
+    border-radius: 4px;
+    background-color: white;
+    z-index: 10;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+.emojiBox > span {
+    width: 10%;
+    height: 20%;
+    margin: 2%;
+    display: flex;
+    cursor: pointer;
+}
+
+/* 프로젝트 */
+.projectList {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 10px 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.projectList:hover {
+    background-color: #dddddd;
+}
+.projectList > div {
+    width: 100%;
+    padding: 0 10px;
+}
+.projectList p {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 2px 0;
+}
+.projectList p:nth-child(1) {
+    font-size: 16px;
+    font-weight: bolder;
+}
+.projectList p:nth-child(2) {
+    font-size: 14px;
+    color: #5e5e5e;
+}
+/* 칸반 */
+.App2 {
+    height: 100%;
+    width: 99%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    transition: all 350ms;
+    overflow: scroll;
+}
+.app_outer {
+    flex: 1;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.app_boards {
+    margin-top: 20px;
+    min-width: fit-content;
+    display: flex;
+    gap: 30px;
+    padding-inline: 2rem;
+    color: var(--text-color);
+}
+/* p {
+    font-size: 16px;
+    line-height: 28px;
+  } */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f2f2f2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 20px 20px 20px 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(195, 195, 195);
+}
+.add__board > textarea {
+    border: 0.5px solid rgb(167, 167, 167) !important;
+    height: 2rem !important;
+}
+.card_detail > textarea {
+    border: 0.5px solid rgb(167, 167, 167) !important;
+}
+.card__values > p {
+    background: #ccc !important;
+}
+.cardinfo__editable {
+    width: fit-content;
+}
+
+/* 엑셀 다운 버튼 */
+#btn_excelDown {
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 5px; /* 둥근 모서리 */
+    transition: background-color 0.3s ease; /* 배경색 전환 효과 */
+}
+
+#btn_excelDown:hover {
+    background-color: #eeeeee; /* 호버 시 배경색 */
+}
+
+/* 캘린더 */
+.CalendarList {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 18px 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.CalendarList:hover {
+    background-color: #dddddd;
+}
+.CalendarList > div {
+    width: 100%;
+    padding: 0 10px;
+}
+.CalendarList p {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bolder;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* 일요일 날짜: 빨간색 */
+.fc-day-sun a {
+    color: red;
+}
+
+/* 토요일 날짜: 파란색 */
+.fc-day-sat a {
+    color: blue;
+}
+
+/* 마이페이지 */
+.myPage {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 10px;
+}
+.myPage * {
+    display: flex;
+}
+.myInfo {
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+}
+.myInfo > p {
+    padding: 10px 0;
+}
+.myInfo > p:nth-child(1) {
+    font-size: 30px;
+    font-weight: bolder;
+}
+.myInfo > p:nth-child(2) {
+    font-size: 20px;
+}
+.myInfo > p:nth-child(3) {
+    font-size: 20px;
+}
+.myPage img {
+    width: 200px;
+    margin: 20px;
+}
+
+.myPage input {
+    border: 0;
+    width: 280px;
+    font-size: 16px;
+    padding: 10px;
+    margin: 4px;
+}
+
+.myContent {
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #dddddd;
+}
+.myContent > div {
+    height: 100%;
+    padding: 10px 0;
+    align-items: center;
+}
+.myContent > div > p {
+    width: 80px;
+    font-size: 16px;
+    font-weight: bolder;
+    align-items: center;
+    padding-left: 10px;
+}
+.myContent label {
+    align-items: center;
+}
+.myPage button {
+    font-size: 16px;
+    min-width: 20px;
+    text-align: center;
+    background-color: transparent;
+    padding: 4px 10px;
+    margin: 0 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #808080;
+}
+.memberBtn {
+    width: 200px;
+    height: 50px;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    font-size: 18px;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+}
+.sBtn {
+    display: flex;
+    width: 60px !important;
+    height: 36px !important;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    font-size: 16px !important;
+    text-align: center !important;
+    align-content: center !important;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.myPageRow {
+    display: flex;
+    justify-content: center;
+}
+.myPageRow > p {
+    width: 300px;
+    text-align: center;
+    align-content: center;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* 플랜 */
+.planBack {
+    /*background-image: url(../public/images/loginBack.jpg);*/
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.planBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    z-index: 20;
+    width: 400px;
+    height: 700px;
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.colorG {
+    color: #00e673;
+}
+.colorB {
+    color: #008ae6;
+}
+.colorR {
+    color: #ff7825;
+}
+.BcolorG {
+    background-color: #00e673 !important;
+}
+.BcolorB {
+    background-color: #008ae6 !important;
+}
+.BcolorR {
+    background-color: #ff7825 !important;
+}
+.planBox > p {
+    font-size: 50px;
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
+.planBox > h3 {
+    font-size: 36px;
+    font-weight: bolder;
+}
+.planBox > h3 > span {
+    font-size: 20px;
+    margin: 0 10px;
+}
+.planBox > button {
+    width: 260px;
+    height: 50px;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    font-size: 26px;
+    margin: 30px 0;
+    cursor: pointer;
+}
+.planDetail > p {
+    font-size: 20px;
+    margin: 20px 0;
+}
+.planDetail > h3 {
+    padding: 4px 0;
+}
+
+.planOrderBack {
+    /*background-image: url(../public/images/loginBack.jpg);*/
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.planOrderBox {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+    z-index: 20;
+    width: 800px;
+    height: 700px;
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.planOrder {
+    display: flex;
+    flex-direction: column;
+}
+.planOrder > p {
+    font-size: 26px;
+    font-weight: bolder;
+    color: black;
+    margin: 10px 0;
+}
+.planOrder > div {
+    margin: 10px 0;
+}
+.planOrder > div > p {
+    font-size: 18px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    color: black;
+}
+.planOrder > div > input {
+    width: 400px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: black;
+    padding: 0 10px;
+}
+.planOrder > select {
+    width: 400px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: transparent;
+    color: black;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.planOrder > select > option {
+    color: black;
+    font-size: 16px;
+}
+.planOrder > div > div > input {
+    width: 90px;
+    height: 40px;
+    margin-right: 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: black;
+    padding: 0 10px;
+}
+.orderInfo {
+    height: 390px;
+    padding: 0 10px;
+    align-items: center;
+    border: 2px solid #7c7c7c;
+    border-radius: 10px;
+}
+.orderInfo > p:nth-child(3) {
+    font-size: 16px;
+    margin-top: 1px;
+}
+.orderInfo > p:nth-child(3) > span {
+    font-size: 26px;
+    margin: 0 4px;
+}
+.orderInfo > div {
+    margin-top: 20px;
+}
+.orderInfo > div > p:nth-child(1) {
+    font-size: 30px;
+}
+.orderInfo > div > p:nth-child(2) {
+    font-size: 24px;
+}
+.orderInfo > div > p:nth-child(2) > span {
+    font-size: 24px;
+}
+.orderInfo > div > p:nth-child(3) {
+    font-size: 24px;
+}
+.orderInfo > button {
+    width: 300px;
+    height: 50px;
+    background-color: #007bff;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.todoRow {
+    display: flex;
+}
+.todoColumn {
+    display: flex;
+    flex-direction: column;
+}
+.todoBox {
+    display: flex;
+    border: 1px solid red;
+}
+
+/*** 문서 ***/
+.docList {
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 8px 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.docList:hover {
+    background-color: #dddddd;
+}
+.docListOn {
+    background-color: #e6e6e6;
+}
+.docList > div {
+    width: 100%;
+    padding: 0 10px;
+}
+.docList p {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bolder;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ce-block__content {
+    max-width: 1100px !important;
+}
+.ce-toolbar__content {
+    max-width: 1100px !important;
+}
+.cdx-block {
+    font-size: 16px;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.show {
+    max-height: 200px; /* 필요한 만큼의 최대 높이 설정 */
+    overflow-y: auto;
+}
+.docEditor {
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.disabled {
+    display: flex;
+    padding: 0 10px 10px 40px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.disabled > p {
+    font-size: 16px;
+    padding: 4px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.disabled > p > img {
+    margin-right: 7px;
+    height: 30px;
+    width: 30px;
+}
+
+/* cs 이용약관 */
+.csTerms {
+    margin: 10px;
+    padding: 10px;
+    height: 50%;
+}
+.csTerms > p {
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 10px 0;
+}
+.csTerms > textarea {
+    height: 100%;
+    font-size: 14px;
+    resize: none;
+    padding: 10px;
+}
+
+/* 관리자 메인 */
+.adminMain {
+    display: flex;
+    margin: 0 30px;
+}
+.adminMain > img,
+.adminMain > a > img {
+    width: 200px;
+}
+.adminMain > p {
+    margin: 10px 0;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.adminMain > span {
+    font-size: 20px;
+    margin: 4px 0;
+}
+.adminImg {
+    align-items: center;
+}
+.adminImg > a > p {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+.adminImg > a > img {
+    width: 250px;
+}
+
+/* todo */
+.todoBtn {
+    display: flex;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0;
+    background-color: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    align-items: center;
+}
+.ssBtn {
+    display: flex;
+    padding: 0 4px;
+    font-size: 14px;
+    border: 1px solid #959595;
+    background-color: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    align-items: center;
+}
